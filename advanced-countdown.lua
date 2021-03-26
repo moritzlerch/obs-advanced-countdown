@@ -528,7 +528,7 @@ function script_properties()
 end
 
 function script_description()
-	return "Sets a text source to act as a timer with advanced options. Hotkeys can be set for starting/stopping and to the reset timer.\n\nInstead of the text, the countdown ends with, a scene can be set to be transitioned to.\n\n[by github.com/MoritzLerch]"
+	return "Sets a text source to act as a timer with advanced options. Hotkeys can be set for starting/stopping and to the reset timer.\n\nInstead of the text, the countdown ends with, a scene can be set to be transitioned to.\n\nSee https://github.com/MoritzLerch/obs-advanced-countdown for more information\n[by github.com/MoritzLerch]"
 end
 
 function script_update(settings)

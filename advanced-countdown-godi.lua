@@ -438,7 +438,7 @@ function settings_modified(props, prop, settings)
 		obs.obs_property_set_visible(button_pause, false)
 		obs.obs_property_set_visible(button_reset, true)
 		obs.obs_property_set_visible(p_a_mode, true)
-		obs.obs_property_set_visible(up_finished, true)
+		obs.obs_property_set_visible(up_finished, false)
 	elseif (mode_setting == "Countdown") then
 		obs.obs_property_set_visible(p_duration, true)
 		obs.obs_property_set_visible(p_year, false)
@@ -600,7 +600,7 @@ function script_properties()
 end
 
 function script_description()
-	return "COUNTDOWN SCRIPT FOR SERVICES\n\nSets a text source to act as a timer with advanced options. Hotkeys can be set for starting/stopping and to the reset timer.\n\nInstead of the text, the countdown ends with, a scene can be set to be transitioned to.\n\nIf you choose the mode \"Normale Godi\" you can simply choose, when the service starts and a countdown will get set automatically.\n\n[by github.com/MoritzLerch]"
+	return "Countdown Script for Worship Service\n\nSets a text source to act as a timer with advanced options. Hotkeys can be set for starting/stopping and to the reset timer.\n\nInstead of the text, the countdown ends with, a scene can be set to be transitioned to.\n\nIf you choose the mode \"Normale Godi\" you can simply choose, when the service starts and a countdown will get set automatically.\n\nSee https://github.com/MoritzLerch/obs-advanced-countdown for more information\n[by github.com/MoritzLerch]"
 end
 
 function script_update(settings)
