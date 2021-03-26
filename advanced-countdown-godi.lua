@@ -600,7 +600,7 @@ function script_properties()
 end
 
 function script_description()
-	return "Countdown Script for Worship Service\n\nSets a text source to act as a timer with advanced options. Hotkeys can be set for starting/stopping and to the reset timer.\n\nInstead of the text, the countdown ends with, a scene can be set to be transitioned to.\n\nIf you choose the mode \"Normale Godi\" you can simply choose, when the service starts and a countdown will get set automatically.\n\nSee https://github.com/MoritzLerch/obs-advanced-countdown for more information\n[by github.com/MoritzLerch]"
+	return "Countdown Script for Worship Service\n\nSets a text source to act as a timer with advanced options. Hotkeys can be set for starting/stopping and to the reset timer.\n\nInstead of the text, the countdown ends with, a scene can be set to be transitioned to.\n\nIf you choose the mode \"Normale Godi\" you can simply choose, when the service starts and a countdown will get set automatically.\n\nhttps://github.com/MoritzLerch/obs-advanced-countdown\n[by github.com/MoritzLerch]"
 end
 
 function script_update(settings)
