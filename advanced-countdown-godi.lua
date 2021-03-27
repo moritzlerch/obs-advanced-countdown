@@ -16,12 +16,14 @@ cur_ns           = 0
 up_when_finished = false
 up               = false
 
-godihours = 9
-godiminutes = 30
+godihours = 0
+godiminutes = 0
 godiseconds = 0
 
 hotkey_id_reset  = obs.OBS_INVALID_HOTKEY_ID
 hotkey_id_pause  = obs.OBS_INVALID_HOTKEY_ID
+hotkey_id_ninethirty = obs.OBS_INVALID_HOTKEY_ID
+hotkey_id_tenthirty = obs.OBS_INVALID_HOTKEY_ID
 
 function delta_time(year, month, day, hour, minute, second)
 	local now = os.time()
@@ -661,10 +663,18 @@ end
 function script_save(settings)
 	local hotkey_save_array_reset = obs.obs_hotkey_save(hotkey_id_reset)
 	local hotkey_save_array_pause = obs.obs_hotkey_save(hotkey_id_pause)
+	local hotkey_save_array_serviceninethirty = obs.obs_hotkey_save(hotkey_id_ninethirty)
+	local hotkey_save_array_servicetenthirty = obs.obs_hotkey_save(hotkey_id_tenthirty)
+
 	obs.obs_data_set_array(settings, "reset_hotkey", hotkey_save_array_reset)
 	obs.obs_data_set_array(settings, "pause_hotkey", hotkey_save_array_pause)
+	obs.obs_data_set_array(settings, "startninethirty_hotkey", hotkey_save_array_serviceninethirty)
+	obs.obs_data_set_array(settings, "starttenthirty_hotkey", hotkey_save_array_servicetenthirty)
+
 	obs.obs_data_array_release(hotkey_save_array_pause)
 	obs.obs_data_array_release(hotkey_save_array_reset)
+	obs.obs_data_array_release(hotkey_save_array_serviceninethirty)
+	obs.obs_data_array_release(hotkey_save_array_servicetenthirty)
 end
 
 function script_load(settings)
@@ -674,12 +684,23 @@ function script_load(settings)
 
 	hotkey_id_reset = obs.obs_hotkey_register_frontend("reset_timer_thingy", "Reset Timer", reset)
 	hotkey_id_pause = obs.obs_hotkey_register_frontend("pause_timer", "Start/Stop Timer", on_pause)
+	hotkey_id_ninethirty = obs.obs_hotkey_register_frontend("ninethirty_service", "Countdown Start GoDi 09:30 Uhr", ninethirty_button_clicked)
+	hotkey_id_tenthirty = obs.obs_hotkey_register_frontend("tenthirty_service", "Countdown Start GoDi 10:30 Uhr", tenthirty_button_clicked)
+	
 	local hotkey_save_array_reset = obs.obs_data_get_array(settings, "reset_hotkey")
 	local hotkey_save_array_pause = obs.obs_data_get_array(settings, "pause_hotkey")
+	local hotkey_save_array_serviceninethirty = obs.obs_data_get_array(settings, "startninethirty_hotkey")
+	local hotkey_save_array_servicetenthirty = obs.obs_data_get_array(settings, "starttenthirty_hotkey")
+	
 	obs.obs_hotkey_load(hotkey_id_reset, hotkey_save_array_reset)
 	obs.obs_hotkey_load(hotkey_id_pause, hotkey_save_array_pause)
+	obs.obs_hotkey_load(hotkey_id_ninethirty, hotkey_save_array_serviceninethirty)
+	obs.obs_hotkey_load(hotkey_id_tenthirty, hotkey_save_array_servicetenthirty)
+	
 	obs.obs_data_array_release(hotkey_save_array_reset)
 	obs.obs_data_array_release(hotkey_save_array_pause)
+	obs.obs_data_array_release(hotkey_save_array_serviceninethirty)
+	obs.obs_data_array_release(hotkey_save_array_servicetenthirty)
 
 	obs.obs_frontend_add_event_callback(on_event)
 
