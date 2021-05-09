@@ -236,7 +236,7 @@ function script_tick(sec)
 
 	if cur_ns < 1 and (mode == "Countdown" or mode == "Normale GoDi" or mode == "Specific time" or mode == "Specific date and time") then
 		if up_when_finished == false then
-			if next_scene ~= "" or next_scene ~= nil then
+			if next_scene ~= "" and next_scene ~= nil then
 				activate_scene(next_scene)
 			else 
 				obs.script_log(obs.LOG_INFO, "no scene set --> setting final text")
